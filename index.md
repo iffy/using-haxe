@@ -2,7 +2,13 @@
 layout: page
 ---
 
-So you want to make a cross-platform application?  So do I.  At least, my 2018 self did.  We'll see how far this goes.  I'm documenting the steps I've taken to get things working for me.  It's part guide (so should be updated) and part journal.
+# Introduction
+
+So you want to make a cross-platform application?  Me, too.
+
+I've created a successful Electron-based budgeting app called [Buckets](https://www.budgetwithbuckets.com).  The process of making a mobile app, however, has been no fun.  As of this writing, I'm still working with Expo and ReactNative, but while I wait for patches to get merged I'm exploring other options.
+
+I want a place to document my findings (mostly so I don't keep going around in circles), so that's why this site exists.
 
 I'm working on macOS.
 
@@ -12,7 +18,7 @@ If something doesn't work for you, please make a Pull Request or file an issue.
 
 ## The Goal
 
-I want an application that works on:
+I want an application that works on all platforms.  The UI doesn't have to be identical between mobile and desktop, but sharing core code is a must.
 
 - [ ] macOS retina
 - [ ] macOS non-retina
@@ -21,7 +27,7 @@ I want an application that works on:
 - [ ] iOS
 - [ ] Android
 
-Features I want:
+Other features I want:
 
 - [ ] Smallish executables
 - [ ] Lowish memory use
@@ -44,10 +50,12 @@ Things I don't care about
 - Matching the look of the host OS.  I'd rather have my app match itself across OSes.
 - Sounds/music
 
-## Progress
+# Platforms
+
+## Haxe
 
 {% for page in site.pages %}
-{%- if page.title -%}
+{%- if page.title and page.dir == "/haxe/" -%}
 1. <a href="{{page.url}}">{{ page.title }}</a>{% endif %}
 {% endfor %}
 

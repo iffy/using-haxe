@@ -1,3 +1,4 @@
 theme: jekyll-theme-leap-day
 title: So You Want a Cross Platform Application?
-description: My journal for making a cross-platform application with Haxe.
+description: My journal for making a cross-platform application.
+exclude: [haxe/code]

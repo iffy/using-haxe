@@ -3,10 +3,36 @@
 
 @import "{{ site.theme }}";
 
+header {
+    position: relative;
+}
+.wrapper {
+    nav {
+        top: 160px;
+    }
+    section {
+        margin-top: 1rem;
+    }
+}
 #banner {
     display: none;
 }
 
 .task-list-item-checkbox {
     margin-right: .5rem;
+}
+
+figure {
+    display: table;
+    text-align: center;
+    margin-bottom: 1rem;
+    img {
+        display: table-row;
+    }
+    figcaption {
+        display: table-row;
+        background-color: #ddd;
+        border-radius: 0 0 3px 3px;
+        font-style: italic;
+    }
 }

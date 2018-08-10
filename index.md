@@ -1,37 +1,53 @@
-## Welcome to GitHub Pages
+---
+layout: page
+---
 
-You can use the [editor on GitHub](https://github.com/iffy/using-haxe/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+So you want to make a cross-platform application?  So do I.  At least, my 2018 self did.  We'll see how far this goes.  I'm documenting the steps I've taken to get things working for me.  It's part guide (so should be updated) and part journal.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+I'm working on macOS.
 
-### Markdown
+## Typos and Broken Things
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+If something doesn't work for you, please make a Pull Request or file an issue.
 
-```markdown
-Syntax highlighted code block
+## The Goal
 
-# Header 1
-## Header 2
-### Header 3
+I want an application that works on:
 
-- Bulleted
-- List
+- [ ] macOS retina
+- [ ] macOS non-retina
+- [ ] Windows
+- [ ] Linux
+- [ ] iOS
+- [ ] Android
 
-1. Numbered
-2. List
+Features I want:
 
-**Bold** and _Italic_ and `Code` text
+- [ ] Smallish executables
+- [ ] Lowish memory use
+- [ ] Fast boot-up
+- [ ] SQLite support
+- [ ] SVG graphics (or any vector graphics, really)
+- [ ] Auto-updating from GitHub
+  - [ ] macOS
+  - [ ] Windows
+  - [ ] Linux
+- [ ] Unicode input support
+- [ ] Accessibility
 
-[Link](url) and ![Image](src)
-```
+Features I'm not expecting but would love to have:
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+- [ ] Embedded browser for Desktop
 
-### Jekyll Themes
+Things I don't care about
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/iffy/using-haxe/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+- Matching the look of the host OS.  I'd rather have my app match itself across OSes.
+- Sounds/music
 
-### Support or Contact
+## Progress
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+{% for page in site.pages %}
+{%- if page.title -%}
+1. <a href="{{page.url}}">{{ page.title }}</a>{% endif %}
+{% endfor %}
+

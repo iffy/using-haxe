@@ -56,6 +56,6 @@ Things I don't care about
 
 {% for page in site.pages %}
 {%- if page.title and page.dir == "/haxe/" -%}
-1. <a href="{{page.url}}">{{ page.title }}</a>{% endif %}
+1. <a href="{{site.url}}{{page.url}}">{{ page.title }}</a>{% endif %}
 {% endfor %}
 

@@ -92,6 +92,8 @@ The application is made up of the following files:
 
 The `Assets/` directory is included in your application (because of the `<assets path="Assets" rename="assets" />` directive in `project.xml`)
 
-## Text
+## Other Tutorials
 
-I'm interested in making a text-heavy application, so here's I want to make a text-heavy application, so 
+I'm not going to duplicate all the existing excellent tutorials out there.  I'd recommend reading the [HaxeCoder Tutorials](https://keyreal-code.github.io/haxecoder-tutorials/) especially if you're making a game.  The [Pong tutorials](https://keyreal-code.github.io/haxecoder-tutorials/07_how_to_make_a_pong_game_in_haxe_and_openfl_part_1.html) are a great starting point.
+
+However, there are some things not covered in those tutorials (such as displaying text) that I'll cover.

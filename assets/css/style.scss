@@ -5,13 +5,21 @@
 
 header {
     position: relative;
+    width: initial;
 }
+
+a.selected {
+    background-color: #f6e58d;
+    padding: 0 .25rem;
+}
+
 .wrapper {
     nav {
         top: 160px;
     }
     section {
         margin-top: 1rem;
+        padding-bottom: 1rem;
     }
 }
 #banner {
@@ -29,6 +37,7 @@ figure {
     img {
         display: table-row;
     }
+    border: 1px solid #ddd;
     figcaption {
         display: table-row;
         background-color: #ddd;

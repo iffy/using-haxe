@@ -54,9 +54,11 @@ Things I don't care about
 
 # Platforms
 
+{% assign sorted_pages = site.pages|sort:'path' %}
+
 ## Haxe
 
-{% for page in site.pages %}
+{% for page in sorted_pages %}
 {%- assign subdir = page.dir|split:'/' -%}
 {%- assign subdir = subdir[1] -%}
 {%- if page.title and subdir == "haxe" -%}

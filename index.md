@@ -8,9 +8,7 @@ So you want to make a cross-platform application?  Me, too.
 
 I've created a successful Electron-based budgeting app called [Buckets](https://www.budgetwithbuckets.com).  The process of making a mobile app, however, has been no fun.  As of this writing, I'm still working with Expo and ReactNative, but while I wait for patches to get merged I'm exploring other options.
 
-I want a place to document my findings (mostly so I don't keep going around in circles), so that's why this site exists.
-
-I'm working on macOS.
+I want a place to document my findings (mostly so I don't keep going around in circles), so that's why this site exists.  I'm working on macOS.
 
 ## Typos and Broken Things
 

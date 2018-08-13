@@ -1,6 +1,6 @@
 ---
 layout: page
-imgdir: img/1-helloworld
+imgdir: img/helloworld
 ---
 
 # Haxe: Hello, World!

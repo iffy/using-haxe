@@ -1,6 +1,6 @@
 ---
 layout: page
-imgdir: img/3-text
+imgdir: img/text
 ---
 
 # Haxe: Text
@@ -121,10 +121,4 @@ Here's the final code for `Source/Main.hx` and `project.xml`:
 ```xml
 {% include_relative code/AddingTextNoBlur/project.xml %}
 ```
-
-## Resizing Windows
-
-XXX todo: <http://books.openfl.org/openfl-developers-guide/display-programming/working-with-display-objects/setting-stage-properties.html>
-
-## Text Input
 

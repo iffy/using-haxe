@@ -1,6 +1,6 @@
 ---
 layout: page
-imgdir: img/2-text
+imgdir: img/debug
 ---
 
 # Haxe: Debugging

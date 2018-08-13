@@ -23,7 +23,7 @@ Following bits of this [tutorial](http://books.openfl.org/openfl-developers-guid
 `Source/Main.hx`
 
 ```haxe
-{% include_relative code/Source/Main.hx %}
+{% include_relative code/resizev1/Source/Main.hx %}
 ```
 
 ## Scaling Without Distorting
@@ -35,12 +35,7 @@ That's all fine... until I put text or an image inside the rectangles.  Then, ev
     <figcaption>Distorted text</figcaption>
 </figure>
 
-XXX I still have to figure out how to nest components (like I imagine HaxeUI lets you do) without distortion.
+I imagine something like HaxeUI would fix this problem, but HaxeUI is in an unusable state at the moment.  But somehow I imagine there's a way to counteract all the scaling that's going on.
 
-## Avoiding Black Window
 
-Another annoying thing is that during resizing, the window goes black:
 
-![Black resizing window](blackwindow.gif)
-
-XXX I don't know how to fix this yet.

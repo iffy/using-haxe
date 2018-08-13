@@ -1,6 +1,9 @@
 ---
 layout: page
 imgdir: img/text
+slug: text
+has_code: yes
+last_modified_at: 2018-08-13
 ---
 
 # Haxe: Text
@@ -38,7 +41,7 @@ AddingText/
 Here's `Soruce/Main.hx`
 
 ```haxe
-{% include_relative code/AddingText/Source/Main.hx %}
+{% include_relative code/{{page.slug}}/Source/Main.hx %}
 ```
 
 

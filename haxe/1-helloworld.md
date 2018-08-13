@@ -1,6 +1,8 @@
 ---
 layout: page
-imgdir: img/helloworld
+slug: helloworld
+has_code: yes
+last_modified_at: 2018-08-13
 ---
 
 # Haxe: Hello, World!
@@ -52,7 +54,7 @@ openfl test neko
 This is what I see:
 
 <figure>
-   <img src="{{page.imgdir}}/nyan.gif" /> 
+   <img src="img/{{page.slug}}/nyan.gif" /> 
    <figcaption>The rainbow result</figcaption>
 </figure>
 
@@ -85,13 +87,13 @@ The application is made up of the following files:
 `Source/Main.hx` is the main entrypoint for your application.
 
 ```haxe
-{% include_relative code/NyanCat/Source/Main.hx %}
+{% include_relative code/{{page.slug}}/Source/Main.hx %}
 ```
 
 `project.xml` is where build/project configuation goes:
 
 ```xml
-{% include_relative code/NyanCat/project.xml %}
+{% include_relative code/{{page.slug}}/project.xml %}
 ```
 
 The `Assets/` directory is included in your application (because of the `<assets path="Assets" rename="assets" />` directive in `project.xml`)

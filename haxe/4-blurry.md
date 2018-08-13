@@ -2,6 +2,7 @@
 layout: page
 slug: blurry
 has_code: yes
+last_modified_at: 2018-08-13
 ---
 
 # Haxe: Blurry Text/Graphics
@@ -78,10 +79,10 @@ I imagine there's a way to put the `textField` (and other fields) into a contain
 Here's the final code for `Source/Main.hx` and `project.xml`:
 
 ```haxe
-{% include_relative code/{{page.slug}}/AddingTextNoBlur/Source/Main.hx %}
+{% include_relative code/{{page.slug}}/Source/Main.hx %}
 ```
 
 ```xml
-{% include_relative code/{{page.slug}}/AddingTextNoBlur/project.xml %}
+{% include_relative code/{{page.slug}}/project.xml %}
 ```
 

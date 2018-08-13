@@ -7,7 +7,9 @@ layout: default
     <a href="{{ "/" | relative_url }}">Home</a>
 
     <hr/>
-    <a target="_blank" href="{{ site.github.repository_url }}/edit/master/{{page.path}}">✏️ Edit This Page</a>
+    <div>
+      <a target="_blank" href="{{ site.github.repository_url }}/edit/master/{{page.path}}">Edit this page</a>
+    </div>
     <div>
       <a target="_blank" href="{{ site.github.repository_url }}/tree/master{{ page.dir }}">View code on GitHub</a>
     </div>
@@ -16,6 +18,10 @@ layout: default
     {% endif %}
 
     {% include related-nav.html %}
+
+    <hr/>
+    <div>Site last built: {{ site.time | date_to_rfc822 }}</div>
+    <div>Made by <a href="https://www.iffycan.com">Matt Haggard</a></div>
 
   </div>
 

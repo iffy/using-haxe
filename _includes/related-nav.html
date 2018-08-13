@@ -11,13 +11,14 @@
   {%- endif -%}
 {%- endfor -%}
 {%- assign otherpage_len = otherpages | size -%}
+{%- assign sorted_others = otherpages | sort: 'path' -%}
 
 {%- if otherpage_len > 1 -%}
 
 <hr/>
 
 <ol>
-{% for otherpage in otherpages %}
+{% for otherpage in sorted_others %}
 <li><a href="{{site.baseurl}}{{otherpage.url}}" {% if otherpage.url == page.url %}class="selected"{% endif %}>{{ otherpage.title }}</a></li>
 {% endfor %}
 </ol>

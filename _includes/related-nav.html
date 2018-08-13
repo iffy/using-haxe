@@ -1,6 +1,12 @@
 {%- assign otherpages = "" | split: "" -%}
+{%- assign subdir = page.dir|split:'/' -%}
+{%- assign subdir = subdir[1] -%}
+
 {%- for otherpage in site.pages -%}
-  {%- if otherpage.title != "" and otherpage.dir == page.dir -%}
+  {%- assign osubdir = otherpage.dir|split:'/' -%}
+  {%- assign osubdir = osubdir[1] -%}
+
+  {%- if otherpage.title != "" and osubdir == subdir -%}
     {%- assign otherpages = otherpages | push: otherpage -%}
   {%- endif -%}
 {%- endfor -%}
@@ -11,10 +17,8 @@
 <hr/>
 
 <ol>
-{% for otherpage in site.pages %}
-{% if otherpage.dir == page.dir %}
+{% for otherpage in otherpages %}
 <li><a href="{{site.baseurl}}{{otherpage.url}}" {% if otherpage.url == page.url %}class="selected"{% endif %}>{{ otherpage.title }}</a></li>
-{% endif %}
 {% endfor %}
 </ol>
 {%- endif -%}

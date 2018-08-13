@@ -1,5 +1,7 @@
 #theme: jekyll-theme-leap-day
 title: So You Want a Cross Platform App?
 description: My notes about making cross-platform apps.
-exclude: [haxe/code]
+exclude:
+  - "haxe/*/code/**"
+  - "haxe/code"
 baseurl: /using-haxe

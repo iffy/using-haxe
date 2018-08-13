@@ -57,7 +57,9 @@ Things I don't care about
 ## Haxe
 
 {% for page in site.pages %}
-{%- if page.title and page.dir == "/haxe/" -%}
+{%- assign subdir = page.dir|split:'/' -%}
+{%- assign subdir = subdir[1] -%}
+{%- if page.title and subdir == "haxe" -%}
 1. <a href="{{site.baseurl}}{{page.url}}">{{ page.title }}</a>{% endif %}
 {% endfor %}
 

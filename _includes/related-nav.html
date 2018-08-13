@@ -2,7 +2,7 @@
 {%- assign subdir = page.dir|split:'/' -%}
 {%- assign subdir = subdir[1] -%}
 
-{%- for otherpage in site.pages -%}
+{%- for otherpage in site.pages|sort:'path' -%}
   {%- assign osubdir = otherpage.dir|split:'/' -%}
   {%- assign osubdir = osubdir[1] -%}
 

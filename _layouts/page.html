@@ -2,38 +2,35 @@
 layout: default
 ---
 
-<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
-  <a href="{{ site.baseurl }}/">Home</a>
-  {% if page.last_modified_at %}Last Modified: {{ page.last_modified_at | date_to_string }}{% endif %}
-  <a href="{{ site.github.repository_url }}/edit/master/{{page.path}}">✏️ Edit This Page</a>
+<div class="col-wrap">
+  <div class="left-nav">
+    <a href="{{ "/" | relative_url }}">Home</a>
+
+    <hr/>
+    <a href="{{ site.github.repository_url }}/edit/master/{{page.path}}">✏️ Edit This Page</a>
+    {% if page.last_modified_at %}
+      <div>Last Modified: {{ page.last_modified_at | date_to_string }}</div>
+    {% endif %}
+
+    {% include related-nav.html %}
+
+  </div>
+
+  <main class="page-content" aria-label="Content">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+      
+    </div>
+
+    {{ content }}
+
+    {% if page.slug and page.has_code %}
+    has code
+    {% endif %}
+
+    <div>
+      {% include related-nav.html %}
+    </div>
+
+  </main>
 </div>
-
-{{ content }}
-
-{% if page.slug and page.has_code %}
-has code
-{% endif %}
-
-{%- assign otherpages = "" | split: "" -%}
-{%- for otherpage in site.pages -%}
-  {%- if otherpage.title != "" and otherpage.dir == page.dir -%}
-    {%- assign otherpages = otherpages | push: otherpage -%}
-  {%- endif -%}
-{%- endfor -%}
-{%- assign otherpage_len = otherpages | size -%}
-
-{%- if otherpage_len > 1 -%}
-
-</section>
-<section>
-<h2>Related Pages</h2>
-
-<ol>
-{% for otherpage in site.pages %}
-{% if otherpage.dir == page.dir %}
-<li><a href="{{site.baseurl}}{{otherpage.url}}" {% if otherpage.url == page.url %}class="selected"{% endif %}>{{ otherpage.title }}</a></li>
-{% endif %}
-{% endfor %}
-</ol>
-{%- endif -%}
 

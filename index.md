@@ -10,9 +10,13 @@ I've created a successful Electron-based budgeting app called [Buckets](https://
 
 I want a place to document my findings (mostly so I don't keep going around in circles), so that's why this site exists.  I'm working on macOS.
 
-## Typos and Broken Things
+## Format
 
-If something doesn't work for you, please make a Pull Request or file an issue.
+The format for these notes is a set of bite-sized problems.  Each page presents a problem and how/if I solved the problem.
+
+## Contributing
+
+If something doesn't work for you, please make a Pull Request (see the Edit This Page link above) or [file an issue](https://github.com/iffy/using-haxe/issues/new).
 
 ## The Goal
 

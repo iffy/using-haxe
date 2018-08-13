@@ -5,6 +5,10 @@ imgdir: img/debug
 
 # Haxe: Debugging
 
+## Problem
+
+How do I emit debug info in OpenFL/Haxe?
+
 ## trace()
 
 Use `trace()` to log to the console as shown here:

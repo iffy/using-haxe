@@ -5,6 +5,10 @@ imgdir: img/helloworld
 
 # Haxe: Hello, World!
 
+## Problem
+
+How do I make a *Hello, World!* app?
+
 ## The Layers
 
 Using Haxe to make an app involves a lot of layers.  Here's some definitions and links.

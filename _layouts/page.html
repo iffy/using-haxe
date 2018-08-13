@@ -10,6 +10,10 @@ layout: default
 
 {{ content }}
 
+{% if page.slug and page.has_code %}
+has code
+{% endif %}
+
 {%- assign otherpages = "" | split: "" -%}
 {%- for otherpage in site.pages -%}
   {%- if otherpage.title != "" and otherpage.dir == page.dir -%}

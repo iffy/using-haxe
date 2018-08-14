@@ -2,31 +2,50 @@ package;
 
 import openfl.display.Sprite;
 import openfl.geom.Rectangle;
+import openfl.display.StageAlign;
+import openfl.display.StageScaleMode;
+import openfl.events.Event;
+import openfl.text.Font;
+import openfl.text.TextField;
+import openfl.text.TextFormat;
 import openfl.Lib;
 
-class Main extends Sprite {	
+class Main extends Sprite {
+
+	var rootWidget: Widget;
+
 	public function new () {
 		super ();
+
+		stage.scaleMode = StageScaleMode.NO_SCALE;
+		stage.align = StageAlign.TOP_LEFT;
+		stage.addEventListener (Event.RESIZE, resized);
+
 		var grid = new Grid();
+		this.rootWidget = grid;
 		grid.backgroundColor = 0xff0000;
-		grid.alpha = 0.5;
-		grid.addRow(20, DistanceUnit.Pixel);
+		grid.addRow(40, DistanceUnit.Pixel);
 		grid.addRow(1, DistanceUnit.Part);
 		grid.addCol(1, DistanceUnit.Part);
 		grid.addCol(4, DistanceUnit.Part);
 		addChild(grid);
 
-		var widget1 = new Widget();
-		widget1.backgroundColor = 0x00ff00;
-		widget1.alpha = 0.5;
-		grid.addAt(widget1, 0, 0, 1, 1);
+		var navbar = new VBox();
+		navbar.backgroundColor = 0x000000;
+		grid.addAt(navbar, 0, 0, 1, 2);
 
-		var widget2 = new Widget();
-		widget2.backgroundColor = 0x0000ff;
-		widget2.alpha = 0.5;
-		grid.addAt(widget2, 1, 1, 2, 2);
+		var label = new Label();
+		label.textField.text = "Hello, Sonny";
+		label.backgroundColor = 0xffffff;
+		navbar.add(label);
 
-		grid.draw();
+		var topbar = new Widget();
+		topbar.backgroundColor = 0x0000ff;
+		grid.addAt(topbar, 1, 1, 2, 2);
+	}
+	function resized(e) {
+		trace('resized: ${stage.stageWidth} x ${stage.stageHeight}');
+		this.rootWidget.draw();
 	}
 }
 
@@ -41,8 +60,7 @@ class Widget extends Sprite {
 	public var parentWidget: Widget = null;
 
 	public function draw() {
-		trace("Drawing widget ", this.name);
-		
+		trace("drawing", this.name);
 		var dims = getMyDimensions();
 		
 		// Draw a rectangle
@@ -56,13 +74,11 @@ class Widget extends Sprite {
 
 		if (parentWidget == null) {
 			// Top-most widget
-			trace("top-most");
 			rect.width = Lib.current.stage.stageWidth;
 			rect.height = Lib.current.stage.stageHeight;
 			return rect;
 		} else {
 			// Has a parent; ask the parent how big I should be
-			trace("has parent");
 			rect = parentWidget.getChildDimensions(this);
 		}
 		return rect;
@@ -71,6 +87,10 @@ class Widget extends Sprite {
 	public function getChildDimensions(child: Widget):Rectangle {
 		// Default widget, children are full size of parent
 		return getMyDimensions();
+	}
+
+	public function whatsYourHeightFor(width: Float):Float {
+		return null;
 	}
 }
 
@@ -154,16 +174,12 @@ class Grid extends Widget {
 	}
 
 	override public function draw() {
-		trace("Grid.draw()");
 		super.draw();
-		trace("children ", children.length);
 		for (child in this.children) {
-			trace("Drawing grid child");
 			child.widget.draw();
 		}
 	}
 	override public function getChildDimensions(child: Widget):Rectangle {
-		trace("Calling getChildDimensions");
 		var mine = this.getMyDimensions();
 		var rowHeights = getRowHeights(mine);
 		var colWidths = getColWidths(mine);
@@ -178,11 +194,11 @@ class Grid extends Widget {
 				var h = 0.0;
 				var r_cursor = 0.0;
 				for (i in 0...rowHeights.length) {
-					if (i == o.grid_x) {
+					if (i == o.grid_y) {
 						y = r_cursor;
 					}
 					r_cursor += rowHeights[i];
-					if (i == o.grid_x2) {
+					if (i == o.grid_y2-1) {
 						h = r_cursor - y;
 					}
 				}
@@ -192,15 +208,11 @@ class Grid extends Widget {
 						x = c_cursor;
 					}
 					c_cursor += colWidths[i];
-					if (i == o.grid_x2) {
+					if (i == o.grid_x2-1) {
 						w = c_cursor - x;
 					}	
 				}
-				trace("dims", x, y, w, h);
 				return new Rectangle(x, y, w, h);
-				// return new Rectangle(
-				// 	o.grid_x
-				// );
 			}
 		}
 		return new Rectangle(0, 0, 0, 0);
@@ -210,6 +222,68 @@ class Grid extends Widget {
 		var member = new GridMember(child, x, y, x2, y2);
 		this.children.push(member);
 		addChild(child);
-		trace("Added child to grid", this.children.length);
+	}
+}
+
+class VBox extends Widget {
+	var children: Array<Widget>;
+
+	public function new() {
+		super();
+		children = new Array();
+	}
+	override public function draw() {
+		super.draw();
+		trace("VBox draw");
+		for (child in children) {
+			child.draw();
+		}
+	}
+	public function add(child: Widget) {
+		child.parentWidget = this;
+		children.push(child);
+		addChild(child);
+	}
+	override public function getChildDimensions(child: Widget):Rectangle {
+		// Default mode is to lay them out according to their heights
+		var mine = getMyDimensions();
+		var rect = new Rectangle(0,0,0,0);
+		rect.width = mine.width;
+		var y_cursor = 0.0;
+		for (child in children) {
+			rect.y = y_cursor;
+			var height = child.whatsYourHeightFor(mine.width);
+			rect.height = height;
+			y_cursor += height;
+		}
+		return rect;
+	}
+}
+
+
+class Label extends Widget {
+	public var textField: TextField;
+	
+	public function new() {
+		super();
+		var format = new TextFormat("Arial", 20, 0x00ff00);
+
+		textField = new TextField();
+		textField.defaultTextFormat = format;
+		textField.embedFonts = true;
+		// textField.scaleY = Lib.current.stage.window.scale;
+		// textField.scaleX = textField.scaleY;
+		this.scaleX = Lib.current.stage.window.scale;
+		this.scaleY = this.scaleX;
+		addChild(textField);
+	}
+	override public function whatsYourHeightFor(width:Float):Float {
+		textField.width = width;
+		return textField.textHeight;
+	}
+	override public function draw() {
+		super.draw();
+		trace("Label draw");
+		trace('text dim: ${textField.textWidth} x ${textField.textHeight}');
 	}
 }

@@ -9,5 +9,5 @@
 	<haxelib name="openfl" />
 	
 	<assets path="Assets" rename="assets" />
-	
+	<window allow-high-dpi="true" />
 </project>
